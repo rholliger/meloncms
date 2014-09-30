@@ -24,7 +24,7 @@
 					<textarea id="metaDescInput" name="metaDesc"><?php if(isset($page->metaDescription)) echo $page->metaDescription; ?></textarea>
 					
 					<input type="submit" name="submit" value="Abschicken" class="btn btn-success"/>
-					<a href="<?= site_url('admin/pages') ?>" class="btn btn-default">Abbrechen</a>
+					<a href="<?= site_url('admin/pages/') ?>" class="btn btn-default">Abbrechen</a>
 				</form>
 			</div>
 			<div id="sideFormDiv">

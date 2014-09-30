@@ -10,9 +10,9 @@
 		        </div>
 		        <nav id="sidenav">
 		        	<ul>
-						<a href="<?= base_url().'admin/pages' ?>"><li>Seiten</li></a>
+						<a href="<?= base_url().'admin/pages/' ?>"><li>Seiten</li></a>
 		        		<a href="#"><li>Artikel</li></a>
-		        		<a href="<?= base_url().'admin/users' ?>"><li>Benutzer</li></a>
+		        		<a href="<?= base_url().'admin/users/' ?>"><li>Benutzer</li></a>
 		        		<a href="#"><li>Einstellungen</li></a>
 		        	</ul>
 		        </nav>

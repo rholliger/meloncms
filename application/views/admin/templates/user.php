@@ -30,7 +30,7 @@
 					<input type="email" id="titleInput" class="textInput" name="email" value="<?php echo set_value('email', $user->email); ?>"/>
 					
 					<input type="submit" name="submit" value="Abschicken" class="btn btn-success"/>
-					<a href="<?= site_url("admin/users") ?>" class="btn btn-default">Abbrechen</a>
+					<a href="<?= site_url("admin/users/") ?>" class="btn btn-default">Abbrechen</a>
 				</form>
 			</div>
 			<div id="sideFormDiv">

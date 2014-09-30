@@ -1,7 +1,7 @@
 <section id="content">
 	<article class="text-container">
 		<h1>Seiten
-			<a href="pages/new" id="newSiteBtn" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Neue Seite</a>
+			<a href="new" id="newSiteBtn" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Neue Seite</a>
 		</h1>
 		<hr id="editHr">
 

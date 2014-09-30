@@ -13,10 +13,8 @@ class Pages extends CI_Controller {
 	public function index() {
 		$page = $this->uri->segment(3);
 
-		log_message("debug", "das rattennest! ".$page);
-
 		$config = array(
-				'base_url' => base_url() . "admin/pages",
+				'base_url' => base_url() . "admin/pages/",
 				'total_rows' => $this->pages_model->count_pages(),
 				'per_page' => 10
 		);
@@ -42,7 +40,7 @@ class Pages extends CI_Controller {
 			if ($this->_check_form()) {
 				$this->pages_model->save_page();
 				$this->session->set_flashdata('success', 'successfully inserted!');
-				redirect('admin/pages');
+				redirect('admin/pages/');
 			}	
 		}
 
@@ -60,7 +58,7 @@ class Pages extends CI_Controller {
 		if ($this->input->post('submit')) {
 			if ($this->_check_form()) {
 				$this->pages_model->save_page($id);
-				redirect('admin/pages');
+				redirect('admin/pages/');
 			}
 		}
 
