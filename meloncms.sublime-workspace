@@ -1,0 +1,677 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"backgr",
+				"background-color"
+			],
+			[
+				"bigIma",
+				"bigImageView"
+			],
+			[
+				"bigImage",
+				"bigImageTemplate"
+			],
+			[
+				"backgro",
+				"background-size"
+			],
+			[
+				"big",
+				"bigImageTemplate"
+			],
+			[
+				"backg",
+				"background-color"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"scroll",
+				"scrollIndex"
+			],
+			[
+				"back",
+				"background-color"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "application/models/users_model.php",
+			"settings":
+			{
+				"buffer_size": 1610,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<section id=\"content\">\n	<article class=\"text-container\">\n		<h1>Seiten\n			<a href=\"pages/new\" id=\"newSiteBtn\" class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-plus\"></span> Neue Seite</a>\n		</h1>\n		<hr id=\"editHr\">\n\n		<!--<?= $this->session->flashdata('success'); ?>-->\n\n		<br>\n		<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>\n		<div id=\"ajaxcontent\"></div>\n		<table id=\"pagesTable\" class=\"cmsTable\">\n			<thead>\n				<tr>\n					<th>ID</th>\n					<th>Titel</th>\n					<th>Inhalt</th>\n					<th>Autor</th>\n					<th>Erstelldatum</th>\n					<th>aktiv</th>\n					<th>Edit</th>\n					<th>Delete</th>\n				</tr>\n			</thead>\n			<tbody>\n\n			<?php \n			if ($pages) {\n				foreach ($pages as $page) { ?>\n					<tr>\n						<td><?= $page->pageID; ?></td>\n						<td><?= $page->title; ?></td>\n						<td style=\"width: 40%;\"><?= word_limiter($page->content, 40); ?></td>\n						<td><?= $page->author; ?></td>\n						<td><?= mdate(\"%d.%m.%Y <br> %H:%i\", strtotime($page->creationDate)); ?></td>\n						<td><?= $page->activeState; ?></td>\n						<td><a href=\"edit/<?= $page->pageID;?>\" class=\"btn btn-primary edit\"><span class=\"glyphicon glyphicon-edit\"></span> Editieren</a></td>\n						<td><button id=\"<?= $page->pageID;?>\" class=\"btn btn-danger delete\"><span class=\"glyphicon glyphicon-remove\"></span> Löschen</button></td>\n					</tr>\n				<?php\n				}\n			}\n			?>\n			\n			</tbody>\n		 </table>\n\n		 <?php echo $links ?>\n\n		<!-- Modal -->\n		<div class=\"modal\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\n		  <div class=\"modal-dialog\">\n		    <div class=\"modal-content\">\n		      <div class=\"modal-header\">\n		        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n		        <h4 class=\"modal-title\" id=\"myModalLabel\">Löschen einer Seite</h4>\n		      </div>\n		      <div class=\"modal-body\">\n		        <p>Sind Sie sicher, dass Sie diese Seite löschen möchten?</p>\n		      </div>\n		      <div class=\"modal-footer\">\n		        <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Schliessen</button>\n		   		<button class=\"btn btn-danger\" id=\"deleteConfirmed\"><span class='glyphicon glyphicon-remove'></span> Löschen</button>\n		      </div>\n		    </div><!-- /.modal-content -->\n		  </div><!-- /.modal-dialog -->\n		</div><!-- /.modal -->\n	</article>\n\n</section>\n\n<script>\n		var pageID;\n		var row;\n\n		$(document).ready(function() {\n			$('#pagesTable').tablesorter({\n				headers: {\n					6: {\n						sorter: false\n					},\n					7: {\n						sorter: false\n					}\n				}\n			});\n		});\n\n		$(document).on('click', '.delete', function(){\n			pageID = $(this).attr('id');\n			row = $(this).parent().parent();\n\n			$('#myModal').modal();\n		});\n\n		$(document).on('click', '#deleteConfirmed', function() {\n			$.ajax({\n				type: 'POST',\n				url: '<?= base_url(); ?>admin/pages/delete',\n				data: 'id='+pageID,\n				beforeSend: function() {\n					$('#myModal').modal('hide');\n				},\n				success: function(response) {\n					row.hide();\n					//TODO: Seite erfolgreich gelöscht message\n\n				}\n			});\n		});\n			\n</script>",
+			"file": "application/views/admin/templates/pages.php",
+			"file_size": 3392,
+			"file_write_time": 1412087049000000,
+			"settings":
+			{
+				"buffer_size": 3386,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "application/controllers/admin/pages.php",
+			"settings":
+			{
+				"buffer_size": 2249,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "application/config/routes.php",
+			"settings":
+			{
+				"buffer_size": 1803,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "application/views/admin/templates/users.php",
+			"settings":
+			{
+				"buffer_size": 2998,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "application/logs/log-2014-09-30.php",
+			"settings":
+			{
+				"buffer_size": 46185,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.php",
+			"settings":
+			{
+				"buffer_size": 6465,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 47.0,
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"instll",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"packagei ",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Grab CA Certs"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Applications/MAMP/htdocs/meloncms/application/models/pages_model.php",
+		"/Applications/MAMP/htdocs/meloncms/application/logs/log-2014-09-30.php",
+		"/Applications/MAMP/htdocs/meloncms/index.php",
+		"/Users/royholliger/Development/newsnet2_longforms/vendor/jquery.jplayer.js",
+		"/Users/royholliger/Development/newsnet2_longforms/styles/fonts.scss",
+		"/Users/royholliger/Development/newsnet2_longforms/styles/_mixins.scss",
+		"/Users/royholliger/Development/newsnet2_longforms/Gruntfile.js",
+		"/Users/royholliger/Library/Caches/Cleanup At Startup/Transmit/592EBB33-3E34-43C7-9357-9840EC925292/style.css",
+		"/Users/royholliger/Development/newsnet2_longforms/app/store.coffee",
+		"/Users/royholliger/Development/newsnet2_longforms/app/templates/video.handlebars",
+		"/Users/royholliger/Development/newsnet2_longforms/app/templates/gigs.handlebars",
+		"/Users/royholliger/Development/newsnet2_longforms/www/index.html",
+		"/Users/royholliger/Development/newsnet2_longforms/Brocfile.js",
+		"/Users/royholliger/Development/newsnet2_longforms/styles/video.scss",
+		"/Users/royholliger/Development/newsnet2_longforms/app/templates/parallax.handlebars",
+		"/Users/royholliger/Development/newsnet2_longforms/styles/slideshow.scss",
+		"/Users/royholliger/Development/newsnet2_longforms/app/templates/slideshow.handlebars",
+		"/Users/royholliger/Development/newsnet2_longforms/app/app.coffee",
+		"/Users/royholliger/Development/newsnet2_longforms/styles/parallax.scss",
+		"/Users/royholliger/Development/newsnet2_longforms/styles/big_image.scss",
+		"/Users/royholliger/Development/newsnet2_longforms/styles/main.scss",
+		"/Users/royholliger/Development/longforms/www/index.html",
+		"/Users/royholliger/Development/longforms/styles/application.scss",
+		"/Users/royholliger/Development/longforms/app/store.coffee",
+		"/Users/royholliger/Development/longforms/styles/video.scss",
+		"/Users/royholliger/Development/longforms/app/templates/text.handlebars",
+		"/Users/royholliger/Development/longforms/app/app.coffee",
+		"/Users/royholliger/Development/longforms/styles/text.scss",
+		"/Users/royholliger/Development/longforms/styles/main.scss",
+		"/Users/royholliger/Development/longforms/styles/big_image.scss",
+		"/Users/royholliger/Development/longforms/app/templates/big_image.handlebars",
+		"/Users/royholliger/Development/longforms/app/view/big_image_view.coffee",
+		"/Users/royholliger/Development/longforms/app/templates/video.handlebars",
+		"/Users/royholliger/Development/longforms/Brocfile.js",
+		"/Users/royholliger/Development/longforms/app/templates/front.handlebars",
+		"/Users/royholliger/Development/longforms/bower.json",
+		"/Users/royholliger/Development/longforms/app/templates/application.handlebars",
+		"/Users/royholliger/Development/longforms/app/templates/text_imageleft.handlebars",
+		"/Users/royholliger/Development/longforms/.gitignore",
+		"/Users/royholliger/Development/longforms/package.json",
+		"/Users/royholliger/Development/longforms/app/view/bigImage_view.coffee",
+		"/Users/royholliger/Development/longforms/styles/header.scss",
+		"/Users/royholliger/Development/longforms/Gruntfile.js",
+		"/Users/royholliger/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/royholliger/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/royholliger/Development/longforms/app/templates/header.handlebars",
+		"/Applications/MAMP/htdocs/cadwalk/.htaccess",
+		"/Users/royholliger/Desktop/index.html",
+		"/Users/royholliger/Development/longform_test/css/style.css",
+		"/Users/royholliger/Library/Application Support/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"errors",
+			"Page Not Found",
+			"standorttext",
+			"NO_SOLUTION",
+			"nO_SOLUTION",
+			"html.used",
+			"elektronische musik kennt keine alters",
+			"jeff mills",
+			"jeff mills war",
+			"$icon-font",
+			"imageElement",
+			"$(element)",
+			"bower",
+			"header",
+			"webapp",
+			"unityPlayer",
+			"survey",
+			".active",
+			"h1",
+			"td.survey-desc",
+			"body",
+			"header h1 a",
+			"background-image"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "application/models/users_model.php",
+					"settings":
+					{
+						"buffer_size": 1610,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 263.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/views/admin/templates/pages.php",
+					"settings":
+					{
+						"buffer_size": 3386,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1369,
+								1369
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 345.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "application/controllers/admin/pages.php",
+					"settings":
+					{
+						"buffer_size": 2249,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								519,
+								519
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "application/config/routes.php",
+					"settings":
+					{
+						"buffer_size": 1803,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1418,
+								1418
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "application/views/admin/templates/users.php",
+					"settings":
+					{
+						"buffer_size": 2998,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								866,
+								866
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "application/logs/log-2014-09-30.php",
+					"settings":
+					{
+						"buffer_size": 46185,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "index.php",
+					"settings":
+					{
+						"buffer_size": 6465,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								999,
+								999
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"templatespage",
+				"application/views/admin/templates/pages.php"
+			],
+			[
+				"user",
+				"application/views/admin/templates/users.php"
+			],
+			[
+				"rout",
+				"application/config/routes.php"
+			],
+			[
+				"config",
+				"application/config/config.php"
+			],
+			[
+				"header",
+				"application/views/admin/templates/header.php"
+			],
+			[
+				"conf",
+				"application/config/config.php"
+			],
+			[
+				"vendor",
+				"vendor/jquery.jplayer.js"
+			],
+			[
+				"fonts",
+				"styles/fonts.scss"
+			],
+			[
+				"mixi",
+				"styles/_mixins.scss"
+			],
+			[
+				"grunt",
+				"Gruntfile.js"
+			],
+			[
+				"bro",
+				"Brocfile.js"
+			],
+			[
+				"index",
+				"www/index.html"
+			],
+			[
+				"gigs",
+				"app/templates/gigs.handlebars"
+			],
+			[
+				"video",
+				"app/templates/video.handlebars"
+			],
+			[
+				"tore",
+				"app/store.coffee"
+			],
+			[
+				"main",
+				"styles/main.scss"
+			],
+			[
+				"bigi",
+				"styles/big_image.scss"
+			],
+			[
+				"app",
+				"app/app.coffee"
+			],
+			[
+				"slide",
+				"app/templates/slideshow.handlebars"
+			],
+			[
+				"te",
+				"styles/text.scss"
+			],
+			[
+				"tex",
+				"styles/text.scss"
+			],
+			[
+				"inde",
+				"www/index.html"
+			],
+			[
+				"appl",
+				"styles/application.scss"
+			],
+			[
+				"sto",
+				"app/store.coffee"
+			],
+			[
+				"text",
+				"app/templates/text.handlebars"
+			],
+			[
+				"bigim",
+				"styles/big_image.scss"
+			],
+			[
+				"applic",
+				"styles/application.scss"
+			],
+			[
+				"biimage",
+				"app/templates/big_image.handlebars"
+			],
+			[
+				"fro",
+				"app/templates/front.handlebars"
+			],
+			[
+				"store",
+				"app/store.coffee"
+			],
+			[
+				"bower",
+				"bower.json"
+			],
+			[
+				"front",
+				"app/templates/front.handlebars"
+			],
+			[
+				"giti",
+				".gitignore"
+			],
+			[
+				"big",
+				"app/templates/big_image.handlebars"
+			],
+			[
+				"applica",
+				"app/templates/application.handlebars"
+			],
+			[
+				"packa",
+				"package.json"
+			],
+			[
+				"broc",
+				"Brocfile.js"
+			],
+			[
+				"apploc",
+				"styles/application.scss"
+			],
+			[
+				"scs",
+				"styles/header.scss"
+			],
+			[
+				"ap",
+				"app/templates/application.handlebars"
+			],
+			[
+				"bow",
+				"bower.json"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 207.0,
+	"status_bar_visible": true
+}
